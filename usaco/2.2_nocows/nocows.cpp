@@ -25,7 +25,6 @@ int main()
     for (int n = 3; n <= N; n+=2) {
         nums[n*cols+1] = 0;
     }
-    nums[1*cols+1] = 1;
 
     for (int n = 3; n <= N; n+=2) {
         cout << "(n=" << n << ") ";
