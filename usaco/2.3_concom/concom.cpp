@@ -57,11 +57,12 @@ int main()
         }
     }
 
-    ofstream fout{"concom.out"};
+    //ofstream fout{"concom.out"};
     for (int i = 1; i <= com_num; ++i) {
         for (int j = 1; j <= com_num; ++j) {
             if (i != j && coms_itered[i*cols+j] > 50) {
-                fout << i << " " << j << endl;
+                //fout << i << " " << j << endl;
+                cout << i << " " << j << endl;
             }
         }
     }
