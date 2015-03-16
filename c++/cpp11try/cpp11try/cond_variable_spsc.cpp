@@ -3,7 +3,7 @@
 //  cpp11try
 //
 //  Created by zhangwt on 15/3/8.
-//  Copyright (c) 2015年 rocketgofree. All rights reserved.
+//  Copyright (c) 2015 rocketgofree. All rights reserved.
 //
 
 #include "cond_variable_spsc.h"
@@ -52,7 +52,7 @@ void producer()
         Simple item = fetchdata();
         
         std::unique_lock<std::mutex> lk(g_mut);
-        g_cv.wait(lk, []{return entries < buf.size();});
+        g_cv.wait(lk, []{return (std::size_t)(entries) < buf.size();});
         
         buf[tail] = item;
         tail = (tail+1) % buf.size();

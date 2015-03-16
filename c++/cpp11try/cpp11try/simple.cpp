@@ -3,7 +3,7 @@
 //  cpp11try
 //
 //  Created by zhangwt on 15/3/7.
-//  Copyright (c) 2015年 rocketgofree. All rights reserved.
+//  Copyright (c) 2015 rocketgofree. All rights reserved.
 //
 
 #include "simple.h"
@@ -22,8 +22,8 @@ void Simple::setshowlog(bool show)
     showlog_ = show;
 }
 
-Simple::Simple(const string& name, int num)
-    : name_{name}, num_{num}
+Simple::Simple(string name, int num)
+	: name_(name), num_(num)
 {
     if (showlog_)
         cout << "CTOR: " << "('" << name_ << "', " << num_ << ")\n";

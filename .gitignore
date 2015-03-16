@@ -29,3 +29,11 @@
 
 # xcode
 *.xcodeproj
+
+# visual studio
+Debug
+*.opensdf
+*.sdf
+*.sln
+*.suo
+*.vcxproj*

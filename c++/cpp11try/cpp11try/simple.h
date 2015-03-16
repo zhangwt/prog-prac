@@ -3,7 +3,7 @@
 //  cpp11try
 //
 //  Created by zhangwt on 15/3/7.
-//  Copyright (c) 2015年 rocketgofree. All rights reserved.
+//  Copyright (c) 2015 rocketgofree. All rights reserved.
 //
 
 #ifndef __cpp11try__simple__
@@ -16,7 +16,7 @@ using namespace std;
 class Simple
 {
 public:
-    Simple(const string& name, int num);
+    Simple(string name, int num);
     ~Simple();
     
     int getNum();
@@ -32,4 +32,4 @@ private:
     static bool showlog_;
 };
 
-#endif /* defined(__cpp11try__classsimple__) */
+#endif /* defined(__cpp11try__simple__) */
