@@ -3,7 +3,7 @@
 //  cpp11try
 //
 //  Created by zhangwt on 15/3/8.
-//  Copyright (c) 2015年 rocketgofree. All rights reserved.
+//  Copyright (c) 2015 rocketgofree. All rights reserved.
 //
 
 #include "cond_variable_spsc_v2.h"
@@ -54,7 +54,7 @@ void producer()
         Simple item = fetchdata();
         
         std::unique_lock<std::mutex> lk(g_mut);
-        g_cv.wait(lk, []{return entries < buf.size();});
+        g_cv.wait(lk, []{return (std::size_t)(entries) < buf.size();});
         lk.unlock();
         
         buf[tail] = item;
@@ -99,7 +99,12 @@ void consumer()
 
 int spsc_v2_try()
 {
-    cout << __func__ << "():\n\n";
+#ifdef WIN32
+	cout << __FUNCTION__ << "():\n\n";
+#else
+	cout << __func__ << "():\n\n";
+#endif
+
     
     std::thread p(producer);
     std::thread c(consumer);

@@ -3,7 +3,7 @@
 //  cpp11try
 //
 //  Created by zhangwt on 15/3/7.
-//  Copyright (c) 2015年 rocketgofree. All rights reserved.
+//  Copyright (c) 2015 rocketgofree. All rights reserved.
 //
 
 #include "shared_pointer.h"
