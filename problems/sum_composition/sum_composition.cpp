@@ -2,7 +2,7 @@
 #include <vector>
 using namespace std;
 
-void sum_composition(const vector<int>& nums, const int targetsum, 
+void sum_composition(const vector<int>& nums, const int targetsum,
         int start, vector<int>& comps, int nowsum)
 {
     if (nowsum == targetsum) {

@@ -24,6 +24,8 @@ namespace cond_variable_spsc_v2 {
     
 std::mutex g_mut;
 std::condition_variable g_cv; // ?? seperate or one global cv for put() and get()
+// if there is only one producer and one consumer, one global cv might be ok;
+// if there are multiple producers and consumers, one not_full_cv for producers, one not_empty_cv for consumers.
 
 std::vector<Simple> buf(10, {"", 0});
 int entries;
@@ -60,7 +62,7 @@ void producer()
         buf[tail] = item;
         tail = (tail+1) % buf.size();
         {
-            std::lock_guard<mutex> mlk(g_mut);
+            std::lock_guard<std::mutex> mlk(g_mut);
             entries += 1;
             std::cout << "put(): " << buf[(tail+buf.size()-1)%buf.size()]
                 << " in " << std::setw(Simple::w) << ((tail+buf.size()-1)%buf.size())
@@ -83,7 +85,7 @@ void consumer()
         Simple item = buf[head];
         head = (head+1) % buf.size();
         {
-            std::lock_guard<mutex> mlk(g_mut);
+            std::lock_guard<std::mutex> mlk(g_mut);
             entries -= 1;
             std::cout << "get(): " << buf[(head+buf.size()-1)%buf.size()]
                 << " in " << std::setw(Simple::w) << ((head+buf.size()-1)%buf.size())
